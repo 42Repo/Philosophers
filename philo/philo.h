@@ -6,14 +6,13 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:41:07 by asuc              #+#    #+#             */
-/*   Updated: 2024/05/17 23:10:04 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/17 23:15:47 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include "../Libft/libft.h"
 # include <pthread.h>
 # include <stdbool.h>
 # include <stdio.h>

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asuc <asuc@student.42angouleme.fr>         +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/02/14 17:26:05 by asuc             ###   ########.fr        #
+#    Updated: 2024/05/17 22:14:30 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,14 @@ BCyan		=	\033[1;36m
 Green		=	\033[0;32m
 NAME		=	philo
 COMP		=	cc
-CFLAGS		=	-Wall -Werror -Wextra
-libft		=	../Libft/
+CFLAGS		=	-Wall -Werror -Wextra -g 
+# -fsanitize=address -fsanitize=undefined
 SRC			=	philo.c\
-				error.c
+				main.c \
+				init.c \
+				parsing.c \
+				utils.c \
+				monitor.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -46,20 +50,16 @@ start :
 	@echo "$(BCyan)Compilation Start$(NAME)$(RESET)\n\n"
 
 $(NAME) : $(OBJ)
-	@make --quiet --no-print-directory -C $(libft)
-	@cp $(libft)libft.a libft.a
-	@$(COMP) $(CFLAGS) -o $(NAME) $(OBJ) libft.a
+	@$(COMP) $(CFLAGS) -o $(NAME) $(OBJ) 
 	@echo "\n$(BGreen)Compilation Final $(NAME)$(RESET)"
 
 clean :
-	@make clean --quiet --no-print-directory -C $(libft)
 	@rm -f $(OBJ)
 	@echo "$(BRed)Erase all .o files$(RESET)"
 
 fclean : clean
-	@make fclean --quiet --no-print-directory -C $(libft)
-	@rm -f $(NAME) libft.a
-	@echo "$(BRed)Erase $(NAME), libft.a$(RESET)"
+	@rm -f $(NAME)
+	@echo "$(BRed)Erase $(NAME)$(RESET)"
 
 re : fclean all
 

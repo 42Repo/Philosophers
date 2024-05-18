@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:41:07 by asuc              #+#    #+#             */
-/*   Updated: 2024/05/17 23:15:47 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/18 00:35:02 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_data
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
+	pthread_mutex_t	*fork;
 	t_philo			*philos;
 }					t_data;
 
@@ -59,5 +60,5 @@ size_t				get_current_time(void);
 int					ft_usleep(size_t milliseconds);
 int					dead_loop(t_philo *philo);
 void				print_message(char *str, t_philo *philo, int id);
-
+void				free_all(t_data *data, char *str);
 #endif

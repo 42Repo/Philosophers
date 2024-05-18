@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:59:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/05/17 23:11:15 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/18 00:36:32 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,22 @@ int	started_threads(t_data *data)
 	int			i;
 
 	i = 0;
-	pthread_create(&monitoring, NULL, &monitor, (void *)data->philos);
+	if (pthread_create(&monitoring, NULL, &monitor, (void *)data->philos) != 0)
+		free_all(data, "Error: failed to create monitoring thread");
 	while (i < data->philos[0].num_of_philos)
 	{
-		pthread_create(&data->philos[i].thread, NULL, &philo_routine,
-			(void *)&data->philos[i]);
+		if (pthread_create(&data->philos[i].thread, NULL, &philo_routine,
+				(void *)&data->philos[i]) != 0)
+			free_all(data, "Error: failed to create philo thread");
 		i++;
 	}
 	i = 0;
-	pthread_join(monitoring, NULL);
+	if (pthread_join(monitoring, NULL))
+		free_all(data, "Error: failed to join monitoring thread");
 	while (i < data->philos[0].num_of_philos)
 	{
-		pthread_join(data->philos[i].thread, NULL);
+		if (pthread_join(data->philos[i].thread, NULL))
+			free_all(data, "Error: failed to join philo thread");
 		i++;
 	}
 	return (0);

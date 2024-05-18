@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:16:47 by asuc              #+#    #+#             */
-/*   Updated: 2024/05/17 22:26:28 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/18 15:32:19 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int	init_all(t_data *data, char *argv[])
 		return (1);
 	if (init_philos(data, &forks, argv))
 		return (1);
+	data->fork = forks;
 	return (0);
 }

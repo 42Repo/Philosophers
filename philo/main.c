@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 01:54:24 by asuc              #+#    #+#             */
-/*   Updated: 2024/05/18 15:39:20 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/02 17:13:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	free_all(t_data *data, char *str)
 	}
 	free(data->fork);
 	free(data->philos);
-
 }
 
 int	main(int argc, char *argv[])

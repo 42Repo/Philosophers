@@ -1,0 +1,92 @@
+[
+ {
+  "directory": "/home/asuc/Documents/42/Philosophers/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-o",
+   "philo.o",
+   "-c",
+   "philo.c"
+  ],
+  "file": "philo.c"
+ },
+ {
+  "directory": "/home/asuc/Documents/42/Philosophers/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-o",
+   "main.o",
+   "-c",
+   "main.c"
+  ],
+  "file": "main.c"
+ },
+ {
+  "directory": "/home/asuc/Documents/42/Philosophers/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-o",
+   "init.o",
+   "-c",
+   "init.c"
+  ],
+  "file": "init.c"
+ },
+ {
+  "directory": "/home/asuc/Documents/42/Philosophers/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-o",
+   "parsing.o",
+   "-c",
+   "parsing.c"
+  ],
+  "file": "parsing.c"
+ },
+ {
+  "directory": "/home/asuc/Documents/42/Philosophers/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-o",
+   "utils.o",
+   "-c",
+   "utils.c"
+  ],
+  "file": "utils.c"
+ },
+ {
+  "directory": "/home/asuc/Documents/42/Philosophers/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-g",
+   "-o",
+   "monitor.o",
+   "-c",
+   "monitor.c"
+  ],
+  "file": "monitor.c"
+ }
+]

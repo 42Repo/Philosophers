@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:31:50 by asuc              #+#    #+#             */
-/*   Updated: 2024/05/17 23:06:04 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/02 17:20:38 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,13 @@ int	check_if_dead(t_philo *philos)
 	{
 		if (philosopher_dead(&philos[i], philos[i].time_to_die))
 		{
-			print_message("died", &philos[i], philos[i].id);
 			pthread_mutex_lock(philos[0].dead_lock);
 			*philos->dead = 1;
 			pthread_mutex_unlock(philos[0].dead_lock);
+			pthread_mutex_lock(philos[i].write_lock);
+			printf("%zu %d %s\n", get_current_time() - philos[i].start_time,
+				philos[i].id, "died");
+			pthread_mutex_unlock(philos[i].write_lock);
 			return (1);
 		}
 		i++;

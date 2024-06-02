@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:41:07 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/02 18:07:50 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/02 19:51:33 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_data
 int					init_all(t_data *data, char *argv[]);
 int					check_args(int argc, char *argv[]);
 long long			ft_atoll(const char *str);
-int					started_threads(t_data *data);
+void				*philo_routine(void *pointer);
 void				*monitor(void *pointer);
 size_t				get_current_time(void);
 int					ft_usleep(size_t milliseconds);

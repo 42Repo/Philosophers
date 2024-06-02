@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 21:31:50 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/02 19:19:04 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/02 19:37:40 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ int	check_if_all_ate(t_philo *philos)
 		pthread_mutex_lock(philos[i].meal_lock);
 		if (philos[i].meals_eaten >= philos[i].num_times_to_eat)
 			finished_eating++;
-		// printf("philo %d ate %d times\n", philos[i].id, philos[i].meals_eaten);
-		// printf("philo %d needs to eat %d times\n", philos[i].id, philos[i].num_times_to_eat);
 		pthread_mutex_unlock(philos[i].meal_lock);
 		i++;
 	}

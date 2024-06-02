@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:41:07 by asuc              #+#    #+#             */
-/*   Updated: 2024/05/18 00:35:02 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/02 18:07:50 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ size_t				get_current_time(void);
 int					ft_usleep(size_t milliseconds);
 int					dead_loop(t_philo *philo);
 void				print_message(char *str, t_philo *philo, int id);
-void				free_all(t_data *data, char *str);
+void				free_all(t_data *data, char *str, pthread_t *monitor_thread,
+						int last_thread);
 #endif

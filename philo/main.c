@@ -6,11 +6,12 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 01:54:24 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/02 17:13:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/02 18:09:57 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <pthread.h>
 
 size_t	ft_strlen(const char *str)
 {
@@ -22,10 +23,13 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void	free_all(t_data *data, char *str)
+void	free_all(t_data *data, char *str, pthread_t *monitor_thread,
+		int last_thread)
 {
 	int	i;
 
+	if (monitor_thread)
+		pthread_join(*monitor_thread, NULL);
 	i = 0;
 	if (str)
 	{
@@ -40,8 +44,12 @@ void	free_all(t_data *data, char *str)
 		pthread_mutex_destroy(&data->fork[i]);
 		i++;
 	}
+	i = 0;
+	while (i <= last_thread)
+		pthread_join(data->philos[i++].thread, NULL);
 	free(data->fork);
 	free(data->philos);
+	exit(1);
 }
 
 int	main(int argc, char *argv[])
@@ -54,6 +62,6 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (started_threads(&data))
 		return (1);
-	free_all(&data, NULL);
+	free_all(&data, NULL, NULL, -1);
 	return (0);
 }

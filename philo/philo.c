@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:59:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/02 18:07:25 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/02 19:28:50 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,44 @@
 
 void	think(t_philo *philo)
 {
-	print_message("is thinking", philo, philo->id);
+	print_message("\033[1;33mis thinking\033[0m", philo, philo->id);
 }
 
 void	dream(t_philo *philo)
 {
-	print_message("is sleeping", philo, philo->id);
+	print_message("\033[1;36mis sleeping\033[0m", philo, philo->id);
 	ft_usleep(philo->time_to_sleep);
 }
 
 void	eat(t_philo *philo)
 {
-	pthread_mutex_lock(philo->r_fork);
-	print_message("has taken a fork", philo, philo->id);
+	if (philo->id % 2 == 0)
+		pthread_mutex_lock(philo->r_fork);
+	else
+		pthread_mutex_lock(philo->l_fork);
+	print_message("\033[1;32mhas taken a fork\033[0m", philo, philo->id);
 	if (philo->num_of_philos == 1)
 	{
 		ft_usleep(philo->time_to_die);
 		pthread_mutex_unlock(philo->r_fork);
 		return ;
 	}
-	pthread_mutex_lock(philo->l_fork);
-	print_message("has taken a fork", philo, philo->id);
+	if (philo->id % 2 == 0)
+		pthread_mutex_lock(philo->l_fork);
+	else
+		pthread_mutex_lock(philo->r_fork);
+	print_message("\033[1;32mhas taken a fork\033[0m", philo, philo->id);
 	philo->eating = 1;
-	print_message("is eating", philo, philo->id);
-	pthread_mutex_lock(philo->meal_lock);
-	philo->last_meal = get_current_time();
-	philo->meals_eaten++;
-	pthread_mutex_unlock(philo->meal_lock);
+	print_message("\033[1;34mis eating\033[0m", philo, philo->id);
+	
 	ft_usleep(philo->time_to_eat);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
+	pthread_mutex_lock(philo->meal_lock);
+	philo->last_meal = get_current_time();
+	philo->meals_eaten++;
+	pthread_mutex_unlock(philo->meal_lock);
 }
 
 void	*philo_routine(void *pointer)

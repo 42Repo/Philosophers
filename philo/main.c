@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 01:54:24 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/04 18:12:07 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/04 21:31:42 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <pthread.h>
 
 size_t	ft_strlen(const char *str)
 {

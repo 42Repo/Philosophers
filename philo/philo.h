@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:41:07 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/02 19:51:33 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/04 18:10:59 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_philo
 	int				num_of_philos;
 	int				num_times_to_eat;
 	int				*dead;
+	pthread_mutex_t	*wait_lock;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*write_lock;
@@ -47,6 +48,7 @@ typedef struct s_data
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
+	pthread_mutex_t	wait_lock;
 	pthread_mutex_t	*fork;
 	t_philo			*philos;
 }					t_data;

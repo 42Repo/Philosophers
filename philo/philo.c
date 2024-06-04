@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:59:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/02 20:07:50 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/04 18:36:10 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	lock_order(t_philo *philo, pthread_mutex_t **fork1,
 	pthread_mutex_t **fork2)
 {
 	if (philo->id % 2 == 0)
+	{
+		printf("philo = %d\n", philo->id);
 		pthread_mutex_lock(*fork1);
+	}
 	else
 		pthread_mutex_lock(*fork2);
 }
@@ -47,13 +50,13 @@ void	eat(t_philo *philo)
 	pthread_mutex_lock(philo->meal_lock);
 	philo->eating = 1;
 	print_message("\033[1;34mis eating\033[0m", philo, philo->id);
+	philo->last_meal = get_current_time();
 	pthread_mutex_unlock(philo->meal_lock);
 	ft_usleep(philo->time_to_eat);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
 	pthread_mutex_lock(philo->meal_lock);
 	philo->eating = 0;
-	philo->last_meal = get_current_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
 }
@@ -63,6 +66,8 @@ void	*philo_routine(void *pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *)pointer;
+	pthread_mutex_lock(philo->wait_lock);
+	pthread_mutex_unlock(philo->wait_lock);
 	if (philo->id % 2 == 0)
 		ft_usleep(1);
 	while (!dead_loop(philo))

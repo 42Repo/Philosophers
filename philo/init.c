@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:16:47 by asuc              #+#    #+#             */
-/*   Updated: 2024/05/18 15:32:19 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/04 18:11:16 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	init_data(t_data *data, char *argv[])
 	pthread_mutex_init(&data->meal_lock, NULL);
 	pthread_mutex_init(&data->dead_lock, NULL);
 	pthread_mutex_init(&data->write_lock, NULL);
+	pthread_mutex_init(&data->wait_lock, NULL);
 	return (0);
 }
 
@@ -52,6 +53,7 @@ int	init_philos(t_data *data, pthread_mutex_t **fork, char *argv[])
 		data->philos[i].write_lock = &data->write_lock;
 		data->philos[i].dead_lock = &data->dead_lock;
 		data->philos[i].meal_lock = &data->meal_lock;
+		data->philos[i].wait_lock = &data->wait_lock;
 		data->philos[i].r_fork = &(*fork)[i];
 		if (i == 0)
 			data->philos[i].l_fork = &(*fork)[ft_atoll(argv[1]) - 1];

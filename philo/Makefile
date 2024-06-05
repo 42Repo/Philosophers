@@ -6,7 +6,7 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/05/18 15:38:46 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/05 16:49:22 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,14 @@ BCyan		=	\033[1;36m
 Green		=	\033[0;32m
 NAME		=	philo
 COMP		=	cc
-CFLAGS		=	-Wall -Werror -Wextra -g
+CFLAGS		=	-Wall -Werror -Wextra -gdwarf-2 -g3
 SRC			=	philo.c\
 				main.c \
 				init.c \
 				parsing.c \
 				utils.c \
-				monitor.c
+				monitor.c \
+				ft_strlen.c
 
 OBJ = $(SRC:.c=.o)
 

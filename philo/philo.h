@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 11:41:07 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/04 18:10:59 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/05 16:38:16 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,6 @@ int					dead_loop(t_philo *philo);
 void				print_message(char *str, t_philo *philo, int id);
 void				free_all(t_data *data, char *str, pthread_t *monitor_thread,
 						int last_thread);
+size_t				ft_strlen(const char *str);
+
 #endif

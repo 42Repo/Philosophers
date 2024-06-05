@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 16:59:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/04 21:45:48 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/05 15:22:00 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,16 @@ void	lock_order(t_philo *philo, pthread_mutex_t **fork1,
 	pthread_mutex_t **fork2)
 {
 	if (philo->id % 2 == 0)
+	{
+		usleep(1500);
 		pthread_mutex_lock(*fork2);
-	else
 		pthread_mutex_lock(*fork1);
+	}
+	else
+	{
+		pthread_mutex_lock(*fork1);
+		pthread_mutex_lock(*fork2);
+	}
 }
 
 void	eat(t_philo *philo)
@@ -43,7 +50,6 @@ void	eat(t_philo *philo)
 		pthread_mutex_unlock(philo->l_fork);
 		return ;
 	}
-	lock_order(philo, &philo->l_fork, &philo->r_fork);
 	print_message("\033[1;32mhas taken a fork\033[0m", philo, philo->id);
 	pthread_mutex_lock(philo->meal_lock);
 	philo->eating = 1;

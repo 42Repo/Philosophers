@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:16:47 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/05 15:28:30 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/07 17:47:27 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	init_data(t_data *data, char *argv[])
 {
 	data->philos = malloc(sizeof(t_philo) * ft_atoll(argv[1]));
 	if (!data->philos)
-		return (1);
+		return (print_error("Error: malloc failed\n"));
 	data->dead_flag = 0;
 	pthread_mutex_init(&data->meal_lock, NULL);
 	pthread_mutex_init(&data->dead_lock, NULL);

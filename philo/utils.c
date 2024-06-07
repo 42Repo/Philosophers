@@ -6,16 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:57:34 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/04 19:30:20 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/07 17:33:25 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
 
 long long	ft_atoll(const char *str)
 {
